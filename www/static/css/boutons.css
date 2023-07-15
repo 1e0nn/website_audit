@@ -1,0 +1,351 @@
+/* cacher la page de chargement dès le début */
+
+#page-de-chargement {
+  display: none;
+}
+
+#page_principale {
+  display: block;
+}
+
+
+/* bouton pour les mode lent et rapide */
+
+.container {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 150px;
+    gap: 110px;
+
+}
+
+.mode {
+    position: relative;
+    padding: 16px 35px;
+    font-size: 1.5rem;
+    color: var(--color);
+    border: 4px solid rgba(0, 0, 0, 0.714);
+    border-radius: 4px;
+    text-shadow: 0 0 15px var(--color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.mode#lent {
+
+  margin-right: 40px;
+
+}
+
+.mode#rapide {
+  
+  margin-left: 40px;
+
+}
+  
+.mode:hover {
+    color: #fff;
+    border: 2px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0px var(--color);
+}
+
+.mode::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color);
+    z-index: -1;
+    transform: scale(0);
+    transition: 0.2s;
+}
+
+.mode:hover::before {
+    transform: scale(1);
+    transition-delay: 0.2s;
+    box-shadow: 0 0 10px var(--color),
+        0 0 30px var(--color),
+        0 0 60px var(--color);
+}
+
+.mode span {
+    position: absolute;
+    background: var(--color);
+    pointer-events: none;
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--color),
+        0 0 20px var(--color),
+        0 0 30px var(--color),
+        0 0 50px var(--color),
+        0 0 100px var(--color);
+    transition: 0.5s ease-in-out;
+    transition-delay: 0.25s;
+}
+
+.mode:hover span {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.mode span:nth-child(1),
+.mode span:nth-child(3) {
+  width: 40px;
+  height: 4px;
+}
+
+.mode:hover span:nth-child(1),
+.mode:hover span:nth-child(3) {
+  transform: translateX(0);
+}
+
+.mode span:nth-child(2),
+.mode span:nth-child(4) {
+  width: 4px;
+  height: 40px;
+}
+
+.mode:hover span:nth-child(1),
+.mode:hover span:nth-child(3) {
+  transform: translateY(0);
+}
+
+.mode span:nth-child(1) {
+  top: calc(50% - 2px);
+  left: -50px;
+  transform-origin: left;
+}
+
+.mode:hover span:nth-child(1) {
+  left: 50%;
+}
+
+.mode span:nth-child(3) {
+  top: calc(50% - 2px);
+  right: -50px;
+  transform-origin: right;
+}
+
+.mode:hover span:nth-child(3) {
+  right: 50%;
+}
+
+.mode span:nth-child(2) {
+  left: calc(50% - 2px);
+  top: -50px;
+  transform-origin: top;
+}
+
+.mode:hover span:nth-child(2) {
+  top: 50%;
+}
+
+.mode span:nth-child(4) {
+  left: calc(50% - 2px);
+  bottom: -50px;
+  transform-origin: bottom;
+}
+
+.mode:hover span:nth-child(4 ) {
+  bottom: 50%;
+}
+
+
+/* conteneur plus cacher le containeur */
+
+.hidden {
+  display: none;
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  margin-bottom: 90px;
+
+}
+ 
+
+/* text */
+
+.text_box_text {
+  color:#ffffff; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px; 
+  font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1;
+  padding-top: 20px
+}
+
+/* bouton retour */
+
+
+#retour {
+    text-decoration: none;
+    display: flex;
+    padding: 1px;
+    width: 19px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 35px;
+
+}
+  
+#retour:hover {
+    background-color: #9a9aa0b2;
+    color: black;
+}
+
+.previous {
+    background-color: #fcfcfde0;
+    color: black;
+}
+
+.round {
+    border-radius: 60%;
+}
+
+/* text box */
+
+
+.centered {
+  width: 550px;
+  height: 110px;
+  margin: auto;
+  position: relative;
+}
+
+.group {
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  position: relative;
+}
+
+label {
+  position: absolute;
+  top: 28px;
+  color: rgba(255, 255, 255, 0.5);
+  font: 400 36.6666666667px Roboto;
+  cursor: text;
+  transition: 0.25s ease;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding-top: 28px;
+  border: none;
+  border-radius: 0;
+  color: white;
+  background: #16152300;
+  font-size: 36.6666666667px;
+  transition: 0.3s ease;
+}
+input:valid ~ label {
+  top: 0;
+  font: 700 22px Roboto;
+  color: rgba(255, 255, 255, 0.5);
+}
+input:focus {
+  outline: none;
+}
+input:focus ~ label {
+  top: 0;
+  font: 700 22px Roboto;
+  color: white;
+}
+input:focus ~ .bar:before {
+  transform: translateX(0);
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #161523 inset;
+  -webkit-text-fill-color: white !important;
+}
+
+.bar {
+  background: rgba(255, 255, 255, 0.5);
+  content: "";
+  width: 550px;
+  
+  height: 3.6666666667px;
+  transition: 0.3s ease;
+  position: relative;
+}
+.bar:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  background: white;
+  transform: translateX(-100%);
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+
+
+/* bouton pour envoyer l'url */
+
+.send.url {
+  align-items: center;
+  margin-left: 45px;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.url:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.url:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.url:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+

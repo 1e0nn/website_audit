@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html id="main">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/rapport.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+
+  
+  <body  style="background: #020024; margin: 0;">
+    <div class="main_conteneur">
+
+      <div class="partie_du_haut">
+        
+        <div class="jauge">
+
+          <div class="gauge">
+            <div class="gauge__body">
+              <div class="gauge__fill"></div>
+              <div id="gauge_id" class="gauge__cover"></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="def">
+          <h2 id="def_vuln1" class="Definitions">N/A
+          </h2>
+        </div>
+        <div class="DL">
+          
+          <button id="dl" class="button-30" style="margin-bottom: 7px;" role="button">Télécharger le rapport</button>
+          
+          <div class="dropdown" style="margin-top: 7px;">
+            <button id="select_report" style="width: 329px;" class="button-30">Afficher un autre rapport</button>
+            <div class="dropdown-content">
+              <!-- Contenu du menu déroulant -->
+              <a class="reports">N/A</a>
+
+            </div>
+
+          </div>
+
+        </div>
+        
+
+      </div>
+
+      <div class="cve_tot_gr">
+
+        <div class="popup" onclick="popup()">?
+          <span class="popuptext" id="myPopup">Vulnérabilités scorable (CVE)</span>
+        </div>
+        <p id="p_cve1" class="p_cve_gr">🟢 Vulnérabilités faible: N/A</p>
+        <p id="p_cve2" class="p_cve_gr">🟡 Vulnérabilités moyenne: N/A</p>
+        <p id="p_cve3" class="p_cve_gr">🟠 Vulnérabilités élevé: N/A</p>
+        <p id="p_cve4" class="p_cve_gr">🔴 Vulnérabilités critique: N/A</p>
+        
+      </div>
+
+      <div class="corps">
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/info.png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Informations</h1>
+        </div>
+
+        <div id="tv">
+          <div class="info_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='nb_infos' class="h1_nb_inf" >N/A</h1>
+              <h2  class="h2_nb_inf" >Informations</h2>
+            </div>
+
+            <div id="block_tv" class="Informations_mi">
+              <div class="col1">
+                <p id="inf1">N/A</p>
+                <p id="inf2">N/A</p>
+                <p id="inf3" style="margin-bottom: 8px;">N/A</p>
+                <p id="inf4" style="margin-top: 0px; margin-bottom: 0px;">N/A</p>
+              </div>
+            </div>
+            <div id="block_tv" class="block_tv_info">
+              <div class="empiler_btn">
+                <button id="colaps1" class="expand-boutonn" onclick="toggleText(1)">Les impacts</button>
+                <button id="colaps2" class="expand-boutonn" onclick="toggleText(2)">Contres mesures</button>
+              </div>
+              <div id="expanded-text1" class="expanded_info">
+                Les informations trouvées peuvent englober des problèmes tels que la divulgation non autorisée, la compromission de la confidentialité, l'accès non autorisé ou les lacunes dans les mécanismes de protection des données. Ces informations peuvent permettre à un attaquant de compromettre la confidentialité mais également l'intégrité ou la disponibilité des informations stockées. 
+              </div>
+              <div id="expanded-text2" class="expanded_info">
+                Mettre en place des mesures de sécurité comme la classification des données pour contrôler l'accès aux informations, la mise en œuvre de politiques strictes des droits d'accès, enlever les indexation pas utiles, l'adoption de techniques de chiffrement pour sécuriser les informations sensibles, la surveillance proactive des activités suspectes et la sensibilisation constante des utilisateurs aux bonnes pratiques en matière de sécurité de l'information.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/malware.png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Vulnérabilité WEB</h1>
+        </div>
+
+        <div id="tv">
+          <div class="vuln_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='lvl_web' class="h1_nb" >N/A</h1>
+              <h2 class="h2_nb">Niveau de criticité</h2>
+              <div class="non_det_barre"></div>
+              <h1 id='nb_web' class="h1_nb" >N/A</h1>
+              <h2 class="h2_nb" >Vulnérabilités WEB</h2>        
+            </div>
+            <div id="block_tv" style="background-color: rgba(255, 255, 255, 0);">
+              <div class="block_tv_droite">
+                <div class="empiler_btn">
+                  <button id="colaps3" class="expand-boutonn" onclick="toggleText(3)">Les impacts</button>
+                  <button id="colaps4" class="expand-boutonn" onclick="toggleText(4)">Contres mesures</button>
+                </div>
+                <div id="expanded-text3" class="expanded">
+                  N/A
+                </div>
+                <div id="expanded-text4" class="expanded">
+                  Il est essentiel de mettre en œuvre des mesures de sécurité solides, telles que la validation et l'échappement des entrées utilisateur, l'utilisation de requêtes préparées, l'application de pare-feu applicatif Web (WAF) et la mise à jour régulière des logiciels et des frameworks utilisés.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/serveur(1).png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Base de données</h1>
+        </div>
+        <div id="tv">
+          <div class="vuln_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='lvl_db' class="h1_nb" >N/A</h1>
+              <h2 class="h2_nb">Niveau de criticité</h2>
+              <div class="non_det_barre"></div>
+              <h1 id='nb_db' class="h1_nb" >N/A</h1>
+              <h2 class="h2_nb" >Vulnérabilités de base de données</h2>
+            </div>
+            <div id="block_tv" style="background-color: rgba(255, 255, 255, 0);">
+              <div class="block_tv_droite">
+                <div class="empiler_btn">
+                  <button id="colaps5" class="expand-boutonn" onclick="toggleText(5)">Les impacts</button>
+                  <button id="colaps6" class="expand-boutonn" onclick="toggleText(6)">Contres mesures</button>
+                </div>
+                <div id="expanded-text5" class="expanded">
+                  N/A
+                </div>
+                <div id="expanded-text6" class="expanded">
+                  Il est essentiel de mettre en place des mesures de sécurité rigoureuses, telles que l'utilisation de protocoles de communication sécurisés (utilisant le chiffrement comme TLS/SSL), la gestion appropriée des ports et des services exposés, la configuration sécurisée des services, l'application de politiques d'authentification solides et la mise à jour régulière des logiciels et des services.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/serveur.png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Services</h1>
+        </div>
+        <div id="tv">
+          <div class="vuln_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='lvl_service' class="h1_nb" >N/A</h1>
+              <h2 class="h2_nb">Niveau de criticité</h2>
+              <div class="non_det_barre"></div>
+              <h1 id='nb_service' class="h1_nb" >N/A</h1>
+              <h2 class="h2_nb" >Vulnérabilités de services</h2>
+            </div>
+            <div id="block_tv" style="background-color: rgba(255, 255, 255, 0);">
+              <div class="block_tv_droite">
+                <div class="empiler_btn">
+                  <button id="colaps7" class="expand-boutonn" onclick="toggleText(7)">Les impacts</button>
+                  <button id="colaps8" class="expand-boutonn" onclick="toggleText(8)">Contres mesures</button>
+                </div>
+                <div id="expanded-text7" class="expanded">
+                  N/A
+                </div>
+                <div id="expanded-text8" class="expanded">
+                  Il est essentiel de mettre en place des mesures de sécurité robustes, telles que l'utilisation de requêtes préparées ou d'ORM pour prévenir les injections SQL, la configuration sécurisée des bases de données en appliquant les bonnes pratiques recommandées par les fournisseurs, la gestion stricte des privilèges d'accès, l'application de mécanismes d'authentification solides et l'utilisation de chiffrement pour protéger les données sensibles.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <button type="button" class="collapsible">Afficher le rapport détaillé</button>
+      <div class="content">
+        <h1 id="def_det" class="titre_détaillé">Le site possède un score de vulnérabilité CVSS de 8.</h1>
+        <div  class="cve_tot_gr_det">
+
+          <p id="p_cve_det1" class="p_cve_gr_det">🟢 CVE faible: N/A</p>
+          <p id="p_cve_det2" class="p_cve_gr_det">🟡 CVE moyenne: N/A</p>
+          <p id="p_cve_det3" class="p_cve_gr_det">🟠 CVE élevé: N/A</p>
+          <p id="p_cve_det4" class="p_cve_gr_det">🔴 CVE critique: N/A</p>
+          
+        </div>
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/info.png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Informations</h1>
+        </div>
+
+        <div id="tv_det">
+          <div class="vuln_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='nb_infos2' style="margin-top: 0px;"class="h1_nb_det" >N/A</h1>
+              <h2 class="h2_nb_det" >Informations</h2>          
+            </div>
+            <div id="block_tv_det" style="background-color: rgba(255, 255, 255, 0);">
+              <p id="text_info" style=" margin-left: 20px;margin-right: 20px;font-size: 21.5px;"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/malware.png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Vulnérabilités WEB</h1>
+        </div>
+
+        <div id="tv_det">
+          <div class="vuln_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='lvl_web2' class="h1_nb_det" >N/A</h1>
+              <h2 class="h2_nb">Niveau de criticité</h2>
+                <div class="barre-noire"></div>
+              <h1 id='nb_scve_web' class="h1_nb_det" >N/A</h1>
+              <h2 class="h2_nb_det" >Vulnérabilités WEB</h2>            
+                <div class="barre-noire"></div>
+              <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                <p id="p_cve5" style="margin-top: 20px; margin-bottom: 6px;" class="h2_nb_det">🟢 CVE faible: N/A</p>
+                <p id="p_cve6" style="margin-top: 6px; margin-bottom: 6px;" class="h2_nb_det">🟡 CVE moyenne: N/A</p>
+                <p id="p_cve7" style="margin-top: 6px; margin-bottom: 6px;" class="h2_nb_det">🟠 CVE élevé: N/A</p>
+                <p id="p_cve8" style="margin-top: 6px; margin-bottom: 0px;" class="h2_nb_det">🔴 CVE critique: N/A</p> 
+              </div>
+     
+            </div>
+            <div id="block_tv_det" style="background-color: rgba(255, 255, 255, 0);">
+              <p id="text_web" style=" margin-left: 20px;margin-right: 20px;font-size: 21.5px;"></p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/serveur(1).png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Base de données</h1>
+        </div>
+        <div id="tv_det">
+          <div class="vuln_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='lvl_db2' class="h1_nb_det" >N/A</h1>
+              <h2 class="h2_nb">Niveau de criticité</h2>
+                <div class="barre-noire"></div>
+              <h1 id='nb_scve_db' class="h1_nb_det" >N/A</h1>
+              <h2 class="h2_nb_det" >Vulnérabilités de base de donnée</h2>            
+                <div class="barre-noire"></div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                  <p id="p_cve9" style="margin-top: 20px; margin-bottom: 6px;" class="h2_nb_det">🟢 CVE faible: N/A</p>
+                  <p id="p_cve10" style="margin-top: 6px; margin-bottom: 6px;" class="h2_nb_det">🟡 CVE moyenne: N/A</p>
+                  <p id="p_cve11" style="margin-top: 6px; margin-bottom: 6px;" class="h2_nb_det">🟠 CVE élevé: N/A</p>
+                  <p id="p_cve12" style="margin-top: 6px; margin-bottom: 0px;" class="h2_nb_det">🔴 CVE critique: N/A</p> 
+                </div>
+            </div>
+            <div id="block_tv_det" style="background-color: rgba(255, 255, 255, 0);">
+              <p id="text_db" style=" margin-left: 20px;margin-right: 20px;font-size: 21.5px;"></p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/serveur.png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Services</h1>
+        </div>
+        <div id="tv_det">
+          <div class="vuln_cadres">
+            <div style="background-color: rgba(255, 255, 255, 0); text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h1 id='lvl_service2' class="h1_nb_det" >N/A</h1>
+              <h2 class="h2_nb">Niveau de criticité</h2>
+                <div class="barre-noire"></div>
+              <h1 id='nb_scve_service' class="h1_nb_det" >N/A</h1>
+              <h2 class="h2_nb_det" >Vulnérabilités de services</h2>            
+                <div class="barre-noire"></div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                  <p id="p_cve13" style="margin-top: 20px; margin-bottom: 6px;" class="h2_nb_det">🟢 CVE faible: N/A</p>
+                  <p id="p_cve14" style="margin-top: 6px; margin-bottom: 6px;" class="h2_nb_det">🟡 CVE moyenne: N/A</p>
+                  <p id="p_cve15" style="margin-top: 6px; margin-bottom: 6px;" class="h2_nb_det">🟠 CVE élevé: N/A</p>
+                  <p id="p_cve16" style="margin-top: 6px; margin-bottom: 0px;" class="h2_nb_det">🔴 CVE critique: N/A</p> 
+                </div>
+            </div>
+            <div id="block_tv_det" style="background-color: rgba(255, 255, 255, 0);">
+              <p id="text_service" style=" margin-left: 20px;margin-right: 20px;font-size: 21.5px;"></p>
+            </div>
+          </div>
+        </div>
+
+        <!--
+        <div class="titres_cadre">
+          <img src="{{ url_for('static', filename='img/icon/virus.png') }}" class="icone_titres" alt="icon">
+          <h1 class="titre_vuln">Vulnérabiliés sans score CVSS</h1>
+        </div>
+        <div id="tv_det">
+          <div class="vuln_cadres">
+            <div  style="background-color: rgba(255, 255, 255, 0); text-align:center;">
+              <h1 id='nb_scve' class="h1_nb_det" > 0</h1>
+              <h2 class="h2_nb_det" >Vulnérabilités sans CVSS</h2>
+            </div>
+            <div id="block_tv_det" style="background-color: rgba(255, 255, 255, 0);">
+            </div>
+          </div>
+        </div>
+        --> 
+      </div> 
+
+    </div>
+
+    <footer class="footer">
+      <div class="ins_footer">
+        <p></p>
+        <div style="display: flex;justify-content: center;align-items: center;">
+          <p style="margin: 0;color: #fff">Site crée par CyberLAB</p>
+        </div>
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin-right: 40px;">
+          <img src="{{ url_for('static', filename='img/cyberlab.png') }}" alt="logo_enterprise" style="margin-bottom:20px;margin-top: 20px; margin-left: 0; margin-right: 0;" width="170" height="125"/>
+        </div>
+      </div>
+      <!-- <p><a href="mailto:hege@example.com">hege@example.com</a></p>--> 
+    </footer>
+
+    
+
+  </body>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/rapport.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</html>
