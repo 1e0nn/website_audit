@@ -1,9 +1,10 @@
-Afin d'avoir les prérequis pour lancer l'application veuillez suivres les instructions:
+To get the prerequisites for running the application, please follow these instructions:
 
--git clone https://github.com/1e0nn/website_audit.git ~/
+# Clone the repository
+git clone https://github.com/1e0nn/website_audit.git ~/
 
--sudo ~/website_audit/prerequis.sh
+# Run the prerequisites script with elevated privileges
+sudo ~/website_audit/prerequisites.sh
 
-puis lancer cette commande:
-
--python3.9 ~/website_audit/www/CyberLab_Web_Server.py
+# Then execute the following command:
+python3.9 ~/website_audit/www/CyberLab_Web_Server.py
