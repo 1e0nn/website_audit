@@ -7,6 +7,7 @@ This project is designed to serve as a web server that conducts security audits 
 ## Installation and Setup
 
 1. **Clone the Repository:**
+    - Use the following command to clone the project:
         ```bash
         git clone https://github.com/1e0nn/website_audit.git ~/
         ```
