@@ -1,5 +1,3 @@
-To get the prerequisites for running the application, please follow these instructions:
-
 # Clone the repository
 git clone https://github.com/1e0nn/website_audit.git ~/
 
